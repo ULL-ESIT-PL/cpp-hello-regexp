@@ -2,8 +2,8 @@
 #include <regex>
 
 int main() {
-    std::string input = "Hello, world!";
-    std::regex pattern("world");
+    std::string input = "Hello, world of dynamic C++ regexps!";
+    std::regex pattern("w.*d");
 
     if (std::regex_search(input, pattern)) {
         std::cout << "Found 'world' in the input string." << std::endl;

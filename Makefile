@@ -1,11 +1,16 @@
 all:
 	@echo "make run"
+	@echo "make matching"
 
-compile:
+hello:
 	clang++ -std=c++11 hello-regexp.cpp -o hello-regxp
 
-run: compile
+run: hello
 	./hello-regxp
 
 clean:
-	rm -f hello-regxp
+	rm -f hello-regxp hello-matching
+
+matching:
+	clang++ -std=c++11 hello-matching.cpp -o hello-matching
+	./hello-matching
