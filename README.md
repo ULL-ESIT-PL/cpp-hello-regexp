@@ -5,11 +5,13 @@ Here's a simple example of a "hello world" program in C++ using regular expressi
 #include <regex>
 
 int main() {
-    std::string input = "Hello, world!";
-    std::regex pattern("world");
+    std::string input = "Hello, world of dynamic C++ regexps!";
+    std::regex pattern("w(.*?)d"); // Regular expression with capturing groups and lazy quantifier
+    std::smatch matches;
 
-    if (std::regex_search(input, pattern)) {
+    if (std::regex_search(input, matches, pattern)) {
         std::cout << "Found 'world' in the input string." << std::endl;
+        std::cout << "First captured group: '" << matches[1] << "'" << std::endl;
     } else {
         std::cout << "Didn't find 'world' in the input string." << std::endl;
     }
@@ -18,12 +20,14 @@ int main() {
 }
 ```
 
-This program searches for the substring "world" within the input string "Hello, world!" using a regular expression pattern. If it finds a match, it prints "Found 'world' in the input string.", otherwise, it prints "Didn't find 'world' in the input string."
+This program searches for the pattern `/w(.*?)d/` within the input string `"Hello, world of dynamic C++ regexps!"` using a regular expression pattern. 
 
-To compile this program on macOS, you can use `clang++`, the C++ compiler that comes with Xcode command line tools. Assuming you've saved the code in a file named `hello_regex.cpp`, you can compile it using the following command in the terminal:
+To compile this program on macOS, you can use `clang++`, the C++ compiler that comes with Xcode command line tools. 
 
 ```
-clang++ -std=c++11 hello_regex.cpp -o hello_regex
+➜  cplusplus-learning git:(main) make run
+clang++ -std=c++11 hello-regexp.cpp -o hello-regxp
+./hello-regxp
+Found 'world' in the input string.
+First captured group: 'orl'
 ```
-
-This command tells `clang++` to use C++11 standard (`-std=c++11`), compiles `hello_regex.cpp` and produces an executable named `hello_regex`. You can then run the program using `./hello_regex` in the terminal. Make sure you have Xcode command line tools installed, which you can install via the Mac App Store or by running `xcode-select --install` in the terminal.
